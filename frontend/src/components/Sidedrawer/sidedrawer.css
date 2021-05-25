@@ -1,4 +1,7 @@
 .sidedrawer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 70%;
   height: 100vh;
   position: fixed;
@@ -11,4 +14,38 @@
 }
 .show {
   transform: translateX(0);
+}
+.sidedrawer__links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.sidedrawer__links > li {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+.sidedrawer__links > li > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 1rem;
+  text-decoration: none;
+  font-size: 1.3rem;
+  border-radius: 8px;
+  background-color: #333;
+  color: white;
+}
+.sidedrawer__links > li > a span span {
+  margin-left: 8px;
+  background: white;
+  color: black;
+  padding: 2px;
+  border-radius: 8px;
+}
+.sidedrawer__links > li > a:hover {
+  background: rgb(22, 158, 106);
+  color: white;
 }

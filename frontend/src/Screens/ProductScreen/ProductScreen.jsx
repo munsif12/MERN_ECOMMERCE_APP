@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./ProductScreen.css";
+
 //actions
 import { getProductDetails as getProductDetailsAction } from "../../redux/actions/productActions";
 import { addToCart } from "../../redux/actions/CartActions";
@@ -49,6 +50,7 @@ function ProductScreen({ match, history }) {
               <p>
                 Qty:
                 <select value={Qty} onChange={(e) => e.target.value}>
+                  {/* //bit confued loking forward to implement */}
                   {[...Array(product.countInStock).keys()].map((val) => (
                     <option key={val + 1} value={val + 1}>
                       {val + 1}

@@ -16,6 +16,10 @@ function ProductScreen({ match, history }) {
       dispatch(getProductDetailsAction(match.params.id));
     }
   }, [dispatch, product, match]);
+  function addToCartItem() {
+    dispatch(addToCart(product._id, Qty));
+    history.push("/cart");
+  }
   return (
     <div className="productScreen">
       {loading ? (
@@ -49,7 +53,7 @@ function ProductScreen({ match, history }) {
               </p>
               <p>
                 Qty:
-                <select value={Qty} onChange={(e) => e.target.value}>
+                <select value={Qty} onChange={(e) => setQty(e.target.value)}>
                   {/* //bit confued loking forward to implement */}
                   {[...Array(product.countInStock).keys()].map((val) => (
                     <option key={val + 1} value={val + 1}>
@@ -59,7 +63,9 @@ function ProductScreen({ match, history }) {
                 </select>
               </p>
               <p>
-                <button type="button">Add product</button>
+                <button type="button" onClick={addToCartItem}>
+                  Add product
+                </button>
               </p>
             </div>
           </div>

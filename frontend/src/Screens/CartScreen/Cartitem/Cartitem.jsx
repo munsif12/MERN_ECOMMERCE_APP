@@ -1,29 +1,42 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Cartitem.css";
-function Cartitem() {
+function Cartitem({
+  id,
+  imgUrl,
+  name,
+  price,
+  countInStock,
+  qty,
+  qtyChangeHandler,
+  removeItemFromCart,
+}) {
   return (
     <div className="cartItem">
       <div className="cartItem__image">
-        <img
-          src="https://image.shutterstock.com/image-vector/laptop-blank-screen-silver-color-260nw-1382811209.jpg"
-          alt=""
-          srcset=""
-        />
+        <img src={imgUrl} alt={name} srcset="" />
       </div>
-      <NavLink exact to={`/product/${12}`} className="cartItem__name">
-        <p>product 1</p>
+      <NavLink exact to={`/product/${id}`} className="cartItem__name">
+        <p>{name}</p>
       </NavLink>
-      <p className="cartItem__price">120.00</p>
-      <select>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
+      <p className="cartItem__price">{price}</p>
+      <select
+        value={qty}
+        onChange={(e) => qtyChangeHandler(id, e.target.value)}
+      >
+        {[...Array(countInStock).keys()].map((x) => (
+          <option key={x + 1} value={x + 1}>
+            {x + 1}
+          </option>
+        ))}
       </select>
-      <button className="cartItem__deleteBtn">
+      <button
+        className="cartItem__deleteBtn"
+        onClick={() => {
+          removeItemFromCart(id);
+          console.log("deleted");
+        }}
+      >
         Del
         <i className="fas fa-trash"></i>
       </button>

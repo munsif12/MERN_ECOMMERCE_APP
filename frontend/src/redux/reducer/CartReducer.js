@@ -23,9 +23,13 @@ const cartReducer = (state = initialState, action) => {
         };
       }
     case actionTypes.REMOVE_FROM_CART:
+      const itemsRemaining = state.cartItems.filter(
+        (x) => x.product !== action.payload
+      );
+      // console.log(itemsRemaining); for testing
       return {
         ...state,
-        cartItems: state.cartItems.filter((x) => x.produt !== action.payload),
+        cartItems: itemsRemaining,
       };
     default:
       return state;

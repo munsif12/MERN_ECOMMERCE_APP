@@ -4,7 +4,7 @@ import "./Product.css";
 function Product({ id, item, description, price, imgUrl }) {
   return (
     <div className="product">
-      <img src={imgUrl} alt="" srcset="" />
+      <img src={imgUrl} alt={item} srcset="" />
       <div className="product__info">
         <p className="info__name">{item}</p>
         <p className="info__desc">{description.substring(0, 100)}</p>

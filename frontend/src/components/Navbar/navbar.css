@@ -79,6 +79,9 @@
 .hamburger:hover div {
   background: rgb(22, 158, 106);
 }
+.activeLink {
+  background: red;
+}
 @media (max-width: 950px) {
   .navbar__links {
     display: none;

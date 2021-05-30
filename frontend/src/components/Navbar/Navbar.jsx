@@ -18,12 +18,12 @@ function Navbar({ click }) {
       <div className="navbar__links">
         <ul className="navbar__ul">
           <li>
-            <NavLink to="/" activeClassName="activeLink">
+            <NavLink exact to="/" activeClassName="activeLink">
               Shop
             </NavLink>
           </li>
           <li className="cartLi">
-            <NavLink to="/cart" activeClassName="active">
+            <NavLink exact to="/cart" activeClassName="activeLink">
               Cart
               <i className="shopping_cart_icon fas fa-shopping-cart"></i>
               <div className="cartLogo__counter">{cartItemsCount()}</div>

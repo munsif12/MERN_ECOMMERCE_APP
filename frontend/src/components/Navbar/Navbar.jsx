@@ -12,19 +12,21 @@ function Navbar({ click }) {
     <div className="navbar">
       {/* logo */}
       <div className="navbar__logo">
-        <h3>MERN SHOPPING APP</h3>
+        <h3>SMART LAPTOP STORE</h3>
       </div>
       {/* links */}
       <div className="navbar__links">
         <ul className="navbar__ul">
           <li>
-            <NavLink to="/">Shop</NavLink>
+            <NavLink to="/" activeClassName="activeLink">
+              Shop
+            </NavLink>
           </li>
           <li className="cartLi">
-            <NavLink to="/cart">
-              <i className="shopping_cart_icon fas fa-shopping-cart"></i>
+            <NavLink to="/cart" activeClassName="active">
               Cart
-              <span className="cartLogo__counter">{cartItemsCount()}</span>
+              <i className="shopping_cart_icon fas fa-shopping-cart"></i>
+              <div className="cartLogo__counter">{cartItemsCount()}</div>
             </NavLink>
           </li>
         </ul>

@@ -17,7 +17,7 @@ function Sidedrawer({ show, click }) {
     <div className={sideDrawerClass.join(" ")}>
       <ul className="sidedrawer__links" onClick={click}>
         <li>
-          <NavLink exact to="/cart">
+          <NavLink exact to="/cart" activeClassName="active">
             <i className="fas fa-shopping-cart"></i>
             <span>
               Cart

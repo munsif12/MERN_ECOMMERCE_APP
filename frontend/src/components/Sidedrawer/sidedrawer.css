@@ -49,3 +49,7 @@
   background: rgb(22, 158, 106);
   color: white;
 }
+.activeLink {
+  background: red;
+  color: red;
+}

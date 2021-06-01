@@ -1,0 +1,27 @@
+{
+  "name": "mern-ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\" ",
+    "data:upload": "node backend/seederScript.js"
+  },
+  "keywords": [],
+  "author": "munsif ali misri",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.10",
+    "redux-devtools-extension": "^2.13.9"
+  },
+  "devDependencies": {
+    "concurrently": "^6.1.0"
+  }
+}

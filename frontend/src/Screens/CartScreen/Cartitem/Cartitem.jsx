@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Cartitem.css";
 function Cartitem({
@@ -11,6 +11,17 @@ function Cartitem({
   qtyChangeHandler,
   removeItemFromCart,
 }) {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  function CheckWindowWidth() {
+    setWindowWidth(window.innerWidth);
+    // console.log(window.innerWidth); testing
+  }
+  useEffect(() => {
+    window.addEventListener("resize", CheckWindowWidth);
+    return () => {
+      document.removeEventListener("resize", CheckWindowWidth);
+    };
+  }, [windowWidth]);
   return (
     <div className="cartItem">
       <div className="cartItem__image">
@@ -19,7 +30,7 @@ function Cartitem({
       <NavLink exact to={`/product/${id}`} className="cartItem__name">
         <p>{name}</p>
       </NavLink>
-      <p className="cartItem__price">{price}</p>
+      <p className="cartItem__price">{price} Rs</p>
       <select
         value={qty}
         onChange={(e) => qtyChangeHandler(id, e.target.value)}
@@ -34,10 +45,9 @@ function Cartitem({
         className="cartItem__deleteBtn"
         onClick={() => {
           removeItemFromCart(id);
-          console.log("deleted");
         }}
       >
-        Del
+        {windowWidth <= 500 ? null : "Delete"}
         <i className="fas fa-trash"></i>
       </button>
     </div>

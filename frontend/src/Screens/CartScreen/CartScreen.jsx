@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Cartitem from "./Cartitem/Cartitem";
 import "./CartScreen.css";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../../redux/actions/CartActions";
+import Loading from "../../components/Loading/Loading";
 function CartScreen() {
+  const [showThanks, seTshowThanks] = useState(false);
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart);
   const { cartItems, loading, error } = items;
@@ -20,17 +22,23 @@ function CartScreen() {
   function getCartSubTotal() {
     return cartItems.reduce((price, prod) => prod.price * prod.qty + price, 0);
   }
+  function showThanksFun() {
+    const getState = document.getElementById("showThanks");
+    getState.style.display = `${showThanks ? "block" : "none"}`;
+  }
   return (
     <div className="cartScreen">
       <div className="cartScreen__left">
         <h2>Shopping Cart</h2>
         {cartItems.length === 0 ? (
           <div>
-            <h2>Cart is Empty You havent added ny item to your Cart</h2>
-            <NavLink to="/">Go Shopping!</NavLink>
+            <h2>Cart is Empty You hav'nt added any item to your Cart</h2>
+            <NavLink to="/" className="goShopping">
+              Go Shopping!
+            </NavLink>
           </div>
         ) : loading ? (
-          <h2>Loading...</h2>
+          <Loading />
         ) : error ? (
           { error }
         ) : (
@@ -50,11 +58,81 @@ function CartScreen() {
       </div>
       <div className="cartScreen__right">
         <div className="cartScreen__info">
-          <p>Cart Items : {getCartItemsCount()}</p>
-          <p>Total : {getCartSubTotal()}</p>
+          <p>
+            Cart Items : <span>{getCartItemsCount()}</span>
+          </p>
+          <p>
+            Total : <span>{getCartSubTotal()} Rs</span>
+          </p>
         </div>
         <div>
-          <button>Proceed To Checkout</button>
+          <button
+            onClick={() => {
+              showThanks ? seTshowThanks(false) : seTshowThanks(true);
+              showThanksFun();
+            }}
+          >
+            Proceed To Checkout
+          </button>
+        </div>
+      </div>
+      <div
+        className="gradientBackgound"
+        style={{
+          display: `${showThanks ? "block" : "none"}`,
+        }}
+      ></div>
+      <div
+        id="showThanks"
+        className="showThanks"
+        style={{ display: `${showThanks ? "block" : "none"}` }}
+      >
+        <div className="closeBill" onClick={() => seTshowThanks(false)}>
+          <i className="far fa-window-close"></i>
+        </div>
+        <div className="thanksMsg">
+          <h2>Thanks For Shopping With Us </h2>
+        </div>
+        <div className="totalbillmsg">
+          <h3>Total Bill :</h3>
+        </div>
+        <div className="totalBill">
+          <table>
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cartItems.map((prod, index) => {
+                return (
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{prod.name}</td>
+                    <td>{prod.price}</td>
+                    <td>{prod.qty}</td>
+                    <td>{prod.qty * prod.price} Rs</td>
+                  </tr>
+                );
+              })}
+              <tr>
+                <td>Sub Total</td>
+                <td>{"//"}</td>
+                <td>{"//"}</td>
+                <td>{getCartItemsCount()}</td>
+                <td className="totalAmount">{getCartSubTotal()} Rs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="shopeMoreWrapper">
+          <NavLink to="/" className="shopeMore">
+            Shope More{" "}
+          </NavLink>
         </div>
       </div>
     </div>

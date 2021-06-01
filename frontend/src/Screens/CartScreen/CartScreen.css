@@ -1,10 +1,16 @@
 .cartScreen {
-  max-width: 1200px;
+  max-width: 100vw;
   display: flex;
   margin-top: 2rem auto;
+  min-height: 81vh;
+}
+.cartScreen__left > h2 {
+  font-size: 2.5rem;
+  color: rgb(40, 176, 255);
+  letter-spacing: 1px;
 }
 .cartScreen h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .cartScreen__left {
   flex: 0.7;
@@ -13,7 +19,8 @@
   padding: 1rem;
 }
 .cartScreen__right {
-  flex: 0.3;
+  margin-top: 6rem;
+  flex: 0.2;
   background: white;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   height: fit-content;
@@ -26,19 +33,45 @@
   border: none;
 }
 .cartScreen__info p {
+  color: rgb(40, 176, 255);
   padding: 8px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.cartScreen__info p span {
+  color: black;
 }
 .cartScreen__right div button {
   padding: 10px 17px;
   width: 100%;
-  background-color: #171717;
+  background-color: rgb(40, 176, 255);
   color: white;
-  border: 1px solid #171717;
+  border: 1px solid rgb(40, 176, 255);
   cursor: pointer;
+  border-radius: 8px;
+  letter-spacing: 2px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.goShopping {
+  border: 1px solid rgb(40, 176, 255);
+  padding: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: rgb(40, 176, 255);
+  color: white;
+  transition: 0.5s ease;
+}
+.goShopping:hover {
+  background-color: green;
+  border: 1px solid green;
 }
 .cartScreen__right div button:hover {
   opacity: 0.9;
 }
+
 @media (max-width: 1200px) {
   .cartScreen {
     max-width: 900px;

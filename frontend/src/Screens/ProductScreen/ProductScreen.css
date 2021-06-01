@@ -1,15 +1,22 @@
 .productScreen {
-  max-width: 1220px;
+  max-width: 100vw;
   margin: 1rem auto;
   display: flex;
+  min-height: 75vh;
 }
 .productScreen__left {
   display: flex;
   flex: 0.8;
 }
+.productScreen__right {
+  border-radius: 8px;
+}
 .left__image {
   margin: 1rem;
-  flex: 0.6;
+  flex: 0.9;
+}
+img {
+  border-radius: 8px;
 }
 .left__info {
   margin: 1rem;
@@ -17,15 +24,27 @@
   background: white;
   height: fit-content;
   font-size: 0.9rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
 }
 .left__name {
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  color: rgb(40, 176, 255);
+}
+.left__price {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: rgb(40, 176, 255);
+}
+.left__desc {
+  color: #171717;
+  font-weight: bold;
 }
 .left__info > p,
 .right__info > p {
   padding: 1rem;
-  border-bottom: 1px sold rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 .left__info > p:last-child,
 .right__info > p:last-child {
@@ -36,23 +55,47 @@
 }
 .productScreen__right {
   width: 250px;
+  min-height: 258px;
   margin: 1rem;
   background-color: white;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 .right__info p {
   padding: 1rem;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  font-weight: bold;
+  color: rgb(40, 176, 255);
+}
+.right__info p span {
+  color: black;
+}
+.right__info p > select {
+  border: 1px solid rgb(40, 176, 255);
+  color: black;
+  font-size: 15px;
+  width: 100px;
+  padding: 0;
+  border-radius: 8px;
+  font-weight: bold;
+  padding-left: 5px;
 }
 .right__info p > button {
   grid-column: 1/-1;
   padding: 10px 16px;
-  background-color: #171717;
+  background-color: rgb(40, 176, 255);
   color: #f4f4f4;
   border: 1px solid white;
   border-radius: 8px;
+  transition: 0.5s ease;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.right__info p > button:hover {
+  background-color: #171717;
 }
 .right__info select {
   padding: 10px 16px;
@@ -74,6 +117,7 @@
   .productScreen__right {
     flex: 1;
     padding: 1rem;
+    width: 90%;
   }
   .right__info {
     width: 100%;

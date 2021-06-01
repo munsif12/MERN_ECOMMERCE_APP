@@ -3,6 +3,7 @@ import "./HomeScreen.css";
 import Product from "./Product/Product";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts as listProducts } from "../../redux/actions/productActions";
+import Loading from "../../components/Loading/Loading";
 function HomeScreen() {
   const dispatch = useDispatch();
   const getProducts = useSelector((state) => state.getProducts);
@@ -15,7 +16,7 @@ function HomeScreen() {
       <h1 className="homeScreen__heading">Products</h1>
       <div className="homeScreen__products">
         {loading ? (
-          <h1>Loading...</h1>
+          <Loading />
         ) : error ? (
           <h1>{error}</h1>
         ) : (
